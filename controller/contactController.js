@@ -32,7 +32,7 @@ const createContact = asyncHandler(async (req, res) => {
         phone,
         user_id: req.user.id
     })
-    res.status(201).json(contact)
+    res.status(201).json({ contact, success: true })
 })
 
 const updateContact = asyncHandler(async (req, res) => {
@@ -64,7 +64,7 @@ const deleteContact = asyncHandler(async (req, res) => {
         throw new Error("You are not competent")
     }
     await contactDb.deleteOne(contact)
-    res.status(200).json(contact)
+    res.status(200).json({ contact, success: true })
 })
 
 module.exports = {
